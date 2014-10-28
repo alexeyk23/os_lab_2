@@ -56,7 +56,8 @@ namespace os_lab_2
                 //блокируем множество, чтобы в него добавить имя файл
                 lock (setOfFNames)
                 {
-                    if (File.GetCreationTime(item) == File.GetLastAccessTime(item))
+                    string fpath = Path.Combine(d, item);
+                    if (File.GetCreationTime(fpath) == File.GetLastWriteTime(fpath))
                     {
                         setOfFNames.Add(item);
                     }

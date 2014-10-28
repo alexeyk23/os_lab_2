@@ -37,6 +37,7 @@
             this.txbxRes1 = new System.Windows.Forms.TextBox();
             this.txbxRes2 = new System.Windows.Forms.TextBox();
             this.btnGoSearch = new System.Windows.Forms.Button();
+            this.btnClearRes = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -109,7 +110,7 @@
             // 
             // btnGoSearch
             // 
-            this.btnGoSearch.Location = new System.Drawing.Point(175, 105);
+            this.btnGoSearch.Location = new System.Drawing.Point(137, 105);
             this.btnGoSearch.Name = "btnGoSearch";
             this.btnGoSearch.Size = new System.Drawing.Size(75, 23);
             this.btnGoSearch.TabIndex = 8;
@@ -117,11 +118,22 @@
             this.btnGoSearch.UseVisualStyleBackColor = true;
             this.btnGoSearch.Click += new System.EventHandler(this.btnGoSearch_Click);
             // 
+            // btnClearRes
+            // 
+            this.btnClearRes.Location = new System.Drawing.Point(218, 105);
+            this.btnClearRes.Name = "btnClearRes";
+            this.btnClearRes.Size = new System.Drawing.Size(75, 23);
+            this.btnClearRes.TabIndex = 9;
+            this.btnClearRes.Text = "Очистить";
+            this.btnClearRes.UseVisualStyleBackColor = true;
+            this.btnClearRes.Click += new System.EventHandler(this.btnClearRes_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(431, 379);
+            this.ClientSize = new System.Drawing.Size(431, 383);
+            this.Controls.Add(this.btnClearRes);
             this.Controls.Add(this.btnGoSearch);
             this.Controls.Add(this.txbxRes2);
             this.Controls.Add(this.txbxRes1);
@@ -149,6 +161,7 @@
         private System.Windows.Forms.TextBox txbxRes1;
         private System.Windows.Forms.TextBox txbxRes2;
         private System.Windows.Forms.Button btnGoSearch;
+        private System.Windows.Forms.Button btnClearRes;
     }
 }
 

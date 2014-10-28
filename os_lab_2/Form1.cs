@@ -36,6 +36,8 @@ namespace os_lab_2
 
         private void btnGoSearch_Click(object sender, EventArgs e)
         {
+            txbxRes1.Text = "";
+            txbxRes2.Text = ""; 
             Founder f1 = new Founder(txbxFirstFolder.Text);
             Founder f2 = new Founder(txbxSecondFolder.Text);
             txbxRes1.Text+="Количество файлов: "+f1.getCountFiles().ToString()+Environment.NewLine;
@@ -48,6 +50,12 @@ namespace os_lab_2
             {
                 txbxRes2.Text += item + Environment.NewLine;
             }
+        }
+
+        private void btnClearRes_Click(object sender, EventArgs e)
+        {
+            txbxRes1.Text = "";
+            txbxRes2.Text = ""; 
         }
     }
 }
