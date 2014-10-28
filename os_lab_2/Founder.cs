@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Threading;
+using System.Collections;
 namespace os_lab_2
 {
     class Founder
     {
         private HashSet<string> setOfFNames = new HashSet<string>();//имена файлов
-        private DirectoryInfo dInfo;
+        private string directoryName;
         public HashSet<string> fileNames 
         {
             get { return setOfFNames; }
@@ -18,18 +19,17 @@ namespace os_lab_2
         }
         public Founder(string dName)
         {
-            dInfo = new DirectoryInfo(dName);
+            directoryName = dName;
         }
-        public int getCountFiles()
+        
+       public int getCountFiles()
         {
-            getAllFiles(dInfo);
+            getAllFiles(directoryName);
             return setOfFNames.Count;
         }
-
-        private void getAllFiles(DirectoryInfo dinf)
-        {
-            //текущая 
-            DirectoryInfo[] folders = dinf.GetDirectories();
+        private void getAllFiles(string dinf)
+        {           
+            string[] folders = RsdnDirectory.GetAllDirectories(dinf).ToArray();
             //сыщики в папке
             Thread[] founders = new Thread[folders.Length];
 
@@ -50,15 +50,15 @@ namespace os_lab_2
         //получает все файлы в директории
         private void getFiles(object directory)
         {
-            DirectoryInfo d = (DirectoryInfo)directory;
-            foreach (FileInfo item in d.GetFiles())
+            string d = (string)directory;
+            foreach (string item in RsdnDirectory.GetFilse(d))
             {
                 //блокируем множество, чтобы в него добавить имя файл
                 lock (setOfFNames)
                 {
-                    if (item.CreationTime == item.LastWriteTime)
+                    if (File.GetCreationTime(item) == File.GetLastAccessTime(item))
                     {
-                        setOfFNames.Add(item.Name);
+                        setOfFNames.Add(item);
                     }
                 }
             }
