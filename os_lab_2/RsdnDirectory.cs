@@ -45,8 +45,8 @@ namespace os_lab_2
             {
                 do
                     if (isGetDirs
-                        ? (findData.dwFileAttributes & FileAttributes.Directory) != 0
-                        : (findData.dwFileAttributes & FileAttributes.Directory) == 0)
+                        ? (findData.dwFileAttributes & FileAttributes.Directory) != 0 
+                        : ((findData.dwFileAttributes & FileAttributes.Directory) == 0) && findData.ftCreationTime.Equals(findData.ftLastWriteTime))
                         yield return findData.cFileName;
                 while (FindNextFile(findHandle, out findData));
             }
@@ -113,7 +113,7 @@ namespace os_lab_2
                     yield return subDir2;
             }
         }
-
+              
         #region Импорт из kernel32
 
         private const int MAX_PATH = 260;

@@ -41,13 +41,12 @@ namespace os_lab_2
             Thread t1 = new Thread(getFiles);
             t1.Start(dinf);
             t1.Join();
-            for (int i = 0; i < folders.Length; i++)
-            {
+            for (int i = 0; i < folders.Length; i++)            
                 founders[i].Join();
-            }
+            
         }
 
-        //получает все файлы в директории
+        //получает все файлы в директории по условию
         private void getFiles(object directory)
         {
             string d = (string)directory;
@@ -55,12 +54,8 @@ namespace os_lab_2
             {
                 //блокируем множество, чтобы в него добавить имя файл
                 lock (setOfFNames)
-                {
-                    string fpath = Path.Combine(d, item);
-                    if (File.GetCreationTime(fpath) == File.GetLastWriteTime(fpath))
-                    {
-                        setOfFNames.Add(item);
-                    }
+                {                    
+                    setOfFNames.Add(item);                    
                 }
             }
         }
